@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <iomanip>
 #include "Employee.h"
 #include "HourlyEmployee.h"
 #include "SalariedEmployee.h"
@@ -38,12 +39,28 @@ void readFile(const string& filename, vector<HourlyEmployee>& hourlyEmployees, v
 int main() {
     
     /* TODO: Define two vectors: HourlyEmployee and SalariedEmployee */
+    vector<HourlyEmployee> hourlyEmployees;
+    vector<SalariedEmployee> salariedEmployees;
 
     // TODO: Add vectors to readFile call, hourly first
-    readFile("employee_info.csv", , );
+    readFile("employee_info.csv", hourlyEmployees, salariedEmployees);
     double result = 0;
 
     // TODO: Print the results
+    cout << "Hourly Employees:" << endl;
+    for (const auto& emp : hourlyEmployees) {
+        cout << "ID: " << emp.getId() << " | Name: " << emp.getName() 
+             << " | Pay this period: $" << fixed << setprecision(2) 
+             << emp.calculatePay() << endl;
+    }
+
+    // Display salaried employees
+    cout << "\nSalaried Employees:" << endl;
+    for (const auto& emp : salariedEmployees) {
+        cout << "ID: " << emp.getId() << " | Name: " << emp.getName() 
+             << " | Pay this period: $" << fixed << setprecision(2) 
+             << emp.calculatePay() << endl;
+    }
     // Remember that you can use the range based for loop
     // Display the results of each type of employee
 
